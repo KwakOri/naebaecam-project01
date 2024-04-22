@@ -19,7 +19,7 @@
 <a href="https://velog.io/@jh5414092/posts">velog: https://velog.io/@jh5414092/posts</a>
 
 ## 기술 스택
-/* <img src="https://img.shields.io/badge/JavaScript-#F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"> */
+/* <img src="https://img.shields.io/badge/JavaScript-#F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white"> */
 
 
 ## 📌 주요 기능
