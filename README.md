@@ -32,12 +32,11 @@
 - 대소문자 관계없이 검색 가능하게 하기
 - 키보드 enter키를 입력해도 검색버튼 클릭한 것과 동일하게 검색 실행시키기
 
-<!-- 
+
 Readme 작성에 참고한 링크
 
-차슈님 벨로그
+- 차슈님 벨로그
 https://velog.io/@cotn963/TIL-4-GITHUB-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-README-%EA%BE%B8%EB%AF%B8%EA%B8%B0
 
-코딩 공부 일지님 티스토리
+- 코딩 공부 일지님 티스토리
 https://cocoon1787.tistory.com/689
---!>
