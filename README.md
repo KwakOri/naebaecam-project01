@@ -35,8 +35,7 @@
 
 Readme 작성에 참고한 링크
 
-- 차슈님 벨로그
-https://velog.io/@cotn963/TIL-4-GITHUB-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-README-%EA%BE%B8%EB%AF%B8%EA%B8%B0
+- <a href="https://velog.io/@cotn963/TIL-4-GITHUB-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-README-%EA%BE%B8%EB%AF%B8%EA%B8%B0">차슈님 벨로그</a>
 
-- 코딩 공부 일지님 티스토리
-https://cocoon1787.tistory.com/689
+- <a href="https://cocoon1787.tistory.com/689">코딩 공부 일지님 티스토리</a>
+
