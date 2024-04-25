@@ -1,4 +1,4 @@
-// import { apiKey } from './api_key.js';
+import { apiKey } from './api_key.js';
 
 const movieArticle = document.querySelector(".content-box");
 let filteringText = "";
