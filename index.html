@@ -3,34 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Duckflix</title>
     <link rel="stylesheet" href="style/reset.css" />
     <link rel="stylesheet" href="style/main-page.css" />
     <link rel="stylesheet" href="style/movie-card.css" />
+    <link rel="icon" href="./img/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
     <div class="nav-area">
       <nav>
-        <div class="logo">LOGO</div>
+        <div class="logo"></div>
         <div class="category">
           <ul>
-            <li><a href="#a">menu1</a></li>
-            <li><a href="#a">menu2</a></li>
-            <li><a href="#a">menu3</a></li>
-            <li><a href="#a">menu4</a></li>
-            <li><a href="#a">menu5</a></li>
+            <li><a href="#a">덕플리스 소개</a></li>
+            <li><a href="#a">신작 영화</a></li>
+            <li><a href="#a">금주의 인기 영화</a></li>
+            <li><a href="#a">개봉 예정작</a></li>
+            <li><a href="#a">추억의 영화</a></li>
           </ul>
         </div>
         <div class="options">
           <ul>
-            <li><a href="#a">menu1</a></li>
-            <li><a href="#a">menu2</a></li>
+            <li><a href="#a">로그인</a></li>
+            <li><a href="#a">내정보</a></li>
           </ul>
         </div>
+        <div class="mobile-options"><i class="fa-solid fa-bars"></i></div> 
       </nav>
     </div>
     <div class="header-area"><header></header></div>
-    <div class="content-area"><div class="content-box"></div></div>
+    <div class="content-area">
+      <div class="title-box"><h2 class="content-title">금주의 인기 영화</h2></div>
+      <div class="filter-box">
+        <ul class="filtering-options">
+          <li class="filtering-option" data-mode="newer">최신순</li>
+          <li class="filtering-option" data-mode="older">오래된순</li>
+          <li class="filtering-option" data-mode="higher-rating">별점높은순</li>
+          <li class="filtering-option" data-mode="lower-rating">별점낮은순</li>
+        </ul>
+        <form id="filter-search-bar" class="search-bar">
+          <input class="text-area" type="textarea" placeholder="영화 제목을 입력해주세요.">
+          <input class="submit-btn" type="submit" value="검색">
+        </form>
+      </div>
+      <div class="content-box"></div></div>
   </body>
   <script src ="./js/movie.js" defer></script>
 </html>
