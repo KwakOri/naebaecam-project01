@@ -7,10 +7,11 @@
 }
 
 .title-box {
+  box-sizing: border-box;
   max-width: 1320px;
   width: 100%;
   height: 50px;
-  margin-left: 40px;
+  padding-left: 40px;
 }
 
 .content-title {
@@ -279,7 +280,51 @@
   background-color: #d6000f;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 500px) {
+  .movie-card,
+  .hot-movie-card {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .movie-card .movie-poster,
+  .hot-movie-card .movie-poster {
+    height: 100%;
+  }
+
+  .movie-info {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px !important;
+  }
+
+  .rating-score {
+    display: none;
+  }
+
+  .hot-movie-card .ralease-date,
+  .release-date {
+    font-size: 12px !important;
+  }
+
+  .hot-movie-card .movie-title,
+  .movie-title {
+    font-size: 18px !important;
+  }
+
+  .hot-movie-card .overview,
+  .overview {
+    margin: 10px 0;
+    font-size: 14px !important;
+  }
+
+  .title-box {
+    max-width: 500px;
+    padding-left: 20px;
+  }
+
   .filter-box {
     flex-direction: column;
   }
@@ -337,7 +382,7 @@
   .content-box ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(240px, auto);
+    grid-auto-rows: minmax(300px, auto);
     justify-items: stretch;
     align-items: center;
     row-gap: 20px;
@@ -346,20 +391,12 @@
     height: 100%;
   }
 
-  .movie-card {
-    height: 240px;
-  }
-
-  .hot-movie-card {
-    height: 240px;
-  }
-
   .filter-box {
     height: 100%;
   }
 
   .filtering-options {
-    margin:  20px 0 20px 0;
+    margin: 20px 0 20px 0;
   }
 
   .content-box {
