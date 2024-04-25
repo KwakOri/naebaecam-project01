@@ -1,4 +1,4 @@
-import { config } from './api_key.js';
+import { apiKey } from './api_key.js';
 
 const movieArticle = document.querySelector(".content-box");
 let filteringText = "";
@@ -25,7 +25,7 @@ let pattern_kor = /[ㄱ-ㅎ|ㅏ-ㅣ]/;
 
 const domain = "https://api.themoviedb.org/3";
 const imageEndPoint = "https://image.tmdb.org/t/p/w500";
-const api_key = config.apikey;
+const api_key = apiKey;
 
 const options = {
   method: "GET",
