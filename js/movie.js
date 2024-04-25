@@ -1,3 +1,5 @@
+import { config } from './api_key.js';
+
 const movieArticle = document.querySelector(".content-box");
 let filteringText = "";
 let filteringMode = "";
@@ -23,7 +25,7 @@ let pattern_kor = /[ㄱ-ㅎ|ㅏ-ㅣ]/;
 
 const domain = "https://api.themoviedb.org/3";
 const imageEndPoint = "https://image.tmdb.org/t/p/w500";
-const api_key = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1Mzk1YWRkYWRhOGQ5MTU4MTU2OGU3YTA2MjY3YjU2MSIsInN1YiI6IjY2MjdjOTZlMTc2YTk0MDE3ZjgyMGU1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.dSyjnXv3sfFr6hvttIaZplHn38xwjk7C79qxDZIPA3s";
+const api_key = config.apikey;
 
 const options = {
   method: "GET",
