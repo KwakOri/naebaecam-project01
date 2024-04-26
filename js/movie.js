@@ -2,6 +2,9 @@ import { apiKey } from "./api_key.js";
 const api_key = apiKey;
 const domain = "https://api.themoviedb.org/3";
 const movieArticle = document.querySelector(".content-box");
+const filterSearchBar = document.querySelector("#filter-search-bar");
+const filterTextArea = document.querySelector("#filter-search-bar .text-area");
+const sortingOptionBtns = document.querySelectorAll(".filtering-option");
 
 const options = {
   method: "GET",
@@ -33,7 +36,6 @@ class Filter {
     this.#sortOrder = text;
   } 
 }
-
 class Movie {
   constructor(
     id,
@@ -235,21 +237,6 @@ const makeMovieArticle = async () => {
   movies = sortingMovies(movies);
   appendMovieCards(movies);
 };
-
-/* 
------------------------------------ 
------------------------------------
------------------------------------
------------------------------------
-*/
-
-const filterSearchBar = document.querySelector("#filter-search-bar");
-const filterTextArea = document.querySelector("#filter-search-bar .text-area");
-window.addEventListener("load", () => {
-  filterTextArea.focus();
-  filterTextArea.setSelectionRange(0, 0);
-});
-
 const addBtnEvent = () => {
   const movieCards = document.querySelectorAll(".movie-card");
   const hotMovieCards = document.querySelectorAll(".hot-movie-card");
@@ -265,15 +252,20 @@ const addBtnEvent = () => {
     });
   });
 };
-
+const main = async () => {
+  await makeMovieArticle();
+  addBtnEvent();
+};
+window.addEventListener("load", () => {
+  filterTextArea.focus();
+  filterTextArea.setSelectionRange(0, 0);
+});
 filterSearchBar.addEventListener("submit", (e) => {
   e.preventDefault();
   Filter.setFilter(filterTextArea.value);
 
   play();
 });
-
-const sortingOptionBtns = document.querySelectorAll(".filtering-option");
 sortingOptionBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.classList.contains("on")) {
@@ -289,12 +281,4 @@ sortingOptionBtns.forEach((btn) => {
     play();
   });
 });
-
-const play = async () => {
-  await makeMovieArticle();
-  addBtnEvent();
-};
-
-play();
-
-// search-bar
+main();
