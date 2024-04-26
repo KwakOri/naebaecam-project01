@@ -1,7 +1,6 @@
 import { apiKey } from "./api_key.js";
 const api_key = apiKey;
 const domain = "https://api.themoviedb.org/3";
-const imageEndPoint = "https://image.tmdb.org/t/p/w500";
 const movieArticle = document.querySelector(".content-box");
 let filteringText = "";
 let sortingMode = "";
@@ -14,7 +13,6 @@ const options = {
     Authorization: api_key,
   },
 };
-
 class Movie {
   constructor(
     id,
@@ -34,9 +32,6 @@ class Movie {
     this.releaseDate = releaseDate;
   }
 }
-
-
-
 const getData = async (query) => {
   let response = await fetch(domain + query, options);
   try {
@@ -112,7 +107,6 @@ const appendMovieCards = (movies) => {
   let moviesCards = movies.map((movie) => makeMovieCard(movie));
 
   moviesCards.forEach((movieCard, i) => {
-
     if (i < 4 && !filteringText && !sortingMode) {
       movieCard.classList.remove("movie-card");
       movieCard.classList.add("hot-movie-card");
@@ -121,7 +115,9 @@ const appendMovieCards = (movies) => {
       const ratingWidth = parseInt(
         movieCard.childNodes[1].childNodes[2].style.width
       );
-      movieCard.childNodes[1].childNodes[2].style.width = `${ratingWidth * 2}px`;
+      movieCard.childNodes[1].childNodes[2].style.width = `${
+        ratingWidth * 2
+      }px`;
     }
     ul.appendChild(movieCard);
   });
@@ -140,6 +136,7 @@ const makeLiTagNode = (id) => {
   return li;
 };
 const makePosterNode = (posterPath) => {
+  const imageEndPoint = "https://image.tmdb.org/t/p/w500";
   const posterNode = document.createElement("div");
   posterNode.classList.add("movie-poster");
   posterNode.style.backgroundImage = `url(${imageEndPoint + posterPath})`;
@@ -189,7 +186,7 @@ const makeMovieCard = (movie) => {
     voteAverage,
     releaseDate,
   } = movie;
-  
+
   let originalTitleNode;
   if (movie.title !== movie.originalTitle) {
     originalTitleNode = makeNormalNode(originalTitle, "movie-original-title");
@@ -209,7 +206,6 @@ const makeMovieCard = (movie) => {
 
   return li;
 };
-
 const makeMovieArticle = async () => {
   deleteExistCards();
   let movies = await getMovies("/movie/popular");
@@ -227,7 +223,6 @@ const makeMovieArticle = async () => {
 
 const filterSearchBar = document.querySelector("#filter-search-bar");
 const filterTextArea = document.querySelector("#filter-search-bar .text-area");
-
 window.addEventListener("load", () => {
   filterTextArea.focus();
   filterTextArea.setSelectionRange(0, 0);
