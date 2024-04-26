@@ -252,7 +252,7 @@ const addBtnEvent = () => {
     });
   });
 };
-const main = async () => {
+const render = async () => {
   await makeMovieArticle();
   addBtnEvent();
 };
@@ -263,8 +263,7 @@ window.addEventListener("load", () => {
 filterSearchBar.addEventListener("submit", (e) => {
   e.preventDefault();
   Filter.setFilter(filterTextArea.value);
-
-  play();
+  render();
 });
 sortingOptionBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -278,7 +277,7 @@ sortingOptionBtns.forEach((btn) => {
       });
       btn.classList.add("on");
     }
-    play();
+    render();
   });
 });
-main();
+render();
