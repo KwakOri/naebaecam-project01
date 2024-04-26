@@ -2,9 +2,6 @@ import { apiKey } from "./api_key.js";
 const api_key = apiKey;
 const domain = "https://api.themoviedb.org/3";
 const movieArticle = document.querySelector(".content-box");
-let filteringText = "";
-let sortingMode = "";
-let pattern_kor = /[ㄱ-ㅎ|ㅏ-ㅣ]/;
 
 const options = {
   method: "GET",
@@ -13,6 +10,30 @@ const options = {
     Authorization: api_key,
   },
 };
+class Filter {
+  static pattern_kor = /[ㄱ-ㅎ|ㅏ-ㅣ]/;
+  static #filter = "";
+  static #sortOrder = "";
+  static getFilter (){
+    return this.#filter;
+  }
+  static setFilter (text){
+    if (this.pattern_kor.test(text)) {
+      alert("정확한 단어를 입력해주세요!");
+      filterTextArea.value = "";
+      return;
+    } else {
+      this.#filter = text;
+    }
+  }
+  static getSortOrder () {
+    return this.#sortOrder;
+  }
+  static setSortOrder (text){
+    this.#sortOrder = text;
+  } 
+}
+
 class Movie {
   constructor(
     id,
@@ -62,19 +83,20 @@ const getMovies = async (path) => {
   console.log("Success!");
   return data;
 };
-const filteringMovies = (filteringText, movies) => {
-  if (filteringText) {
+const filteringMovies = (movies) => {
+  const filter = Filter.getFilter();
+  if (filter !== "") {
     return movies.filter((movie) => {
       const movieTitle = movie.title.toUpperCase();
-      return movieTitle.includes(filteringText.toUpperCase());
+      return movieTitle.includes(filter.toUpperCase());
     });
   } else {
     return movies;
   }
 };
-const sortingMovies = (sortingMode, movies) => {
-  if (sortingMode) {
-    switch (sortingMode) {
+const sortingMovies = (movies) => {
+  if (Filter.getSortOrder()) {
+    switch (Filter.getSortOrder()) {
       case "higher-rating":
         return movies.sort((prev, next) => {
           return next.voteAverage - prev.voteAverage;
@@ -107,7 +129,7 @@ const appendMovieCards = (movies) => {
   let moviesCards = movies.map((movie) => makeMovieCard(movie));
 
   moviesCards.forEach((movieCard, i) => {
-    if (i < 4 && !filteringText && !sortingMode) {
+    if (i < 4 && !Filter.getFilter() && !Filter.getSortOrder()) {
       movieCard.classList.remove("movie-card");
       movieCard.classList.add("hot-movie-card");
 
@@ -209,8 +231,8 @@ const makeMovieCard = (movie) => {
 const makeMovieArticle = async () => {
   deleteExistCards();
   let movies = await getMovies("/movie/popular");
-  movies = filteringMovies(filteringText, movies);
-  movies = sortingMovies(sortingMode, movies);
+  movies = filteringMovies(movies);
+  movies = sortingMovies(movies);
   appendMovieCards(movies);
 };
 
@@ -246,12 +268,8 @@ const addBtnEvent = () => {
 
 filterSearchBar.addEventListener("submit", (e) => {
   e.preventDefault();
-  filteringText = filterTextArea.value;
-  if (pattern_kor.test(filteringText)) {
-    alert("정확한 단어를 입력해주세요!");
-    filterTextArea.value = "";
-    return;
-  }
+  Filter.setFilter(filterTextArea.value);
+
   play();
 });
 
@@ -259,10 +277,10 @@ const sortingOptionBtns = document.querySelectorAll(".filtering-option");
 sortingOptionBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.classList.contains("on")) {
-      sortingMode = "";
+      Filter.setSortOrder("");
       btn.classList.remove("on");
     } else {
-      sortingMode = btn.dataset.mode;
+      Filter.setSortOrder(btn.dataset.mode);
       sortingOptionBtns.forEach((btn) => {
         btn.classList.remove("on");
       });
